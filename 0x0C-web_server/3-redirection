@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Configures Nginx server so that /redirect_me redirects to another page.
+# The redirection is configured as a "301 Moved Permanently".
+
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
+string_replace="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/AAteddy permanent;"
+sudo sed -i "s/server_name _;/$string_replace/" /etc/nginx/sites-enabled/default
+sudo service nginx restart
