@@ -1,7 +1,7 @@
 # Automating Nginx server configuration using Puppet.
 
 package { 'nginx':
-  ensure  => installed,
+  ensure  => 'installed',
 }
 
 file_line { 'install':
@@ -16,6 +16,7 @@ file { '/var/www/html/index.html':
 }
 
 service { 'nginx':
-  ensure   => running,
+  ensure   => 'running',
+  enable   => true,
   require  => Package['nginx'],
 }
