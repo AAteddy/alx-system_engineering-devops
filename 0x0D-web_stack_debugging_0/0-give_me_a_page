@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Run Apache
+# Start Apache to run in docker.
 
 sudo service apache2 start
