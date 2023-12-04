@@ -10,7 +10,7 @@ sudo apt-get install -y nginx
 # creating an index.html page
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# performing a redirection "redirect permanent (301)"
+# performing a redirection "moved permanently redirection (301)"
 new_string="server_name _; \n\trewrite ^\/redirect_me https:\/\/github.com\/AAteddy permanent;"
 sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
 
@@ -20,7 +20,7 @@ string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\
 sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # custom HTTP response header
-sudo sed -i "server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
 
 # Test for syntax errors
 sudo nginx -t
