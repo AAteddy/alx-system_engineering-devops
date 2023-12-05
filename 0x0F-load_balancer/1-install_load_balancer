@@ -4,10 +4,8 @@
 #+    Distributes requests using a round-robin algorithm.
 
 # Install and configure HAproxy on my lb-01 server
-apt-get install -y software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.8
-apt-get -y update
-apt-get install -y haproxy=2.8.\*
+sudo apt-get -y update
+apt-get -y install haproxy
 
 # Edit haproxy.cfg configuration file
 server_config=\
