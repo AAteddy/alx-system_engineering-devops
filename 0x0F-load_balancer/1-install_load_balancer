@@ -12,7 +12,7 @@ sudo apt-get install -y haproxy=2.8.\*
 # Edit haproxy.cfg configuration file
 server_config=\
 "
-frontend  teddy-frontend
+frontend teddy_frontend
 	bind *:80
 	mode http
 	default_backend teddy_backend
