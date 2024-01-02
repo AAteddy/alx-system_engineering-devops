@@ -12,9 +12,12 @@ if __name__ == '__main__':
     user = requests.get(url + 'users/{}'.format(sys.argv[1])).json()
     todos = requests.get(url + 'todos', params={'userId': sys.argv[1]}).json()
 
-    with open("{}.csv".format(sys.argv[1]), "w", newline="") as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+    with open("{}.csv".format(sys.argv[1]), "w", newline="") as csv_file:
+        writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         [writer.writerow(
-            [user.get('id'), user.get('username'), td.get('completed'), td.get('title')]
+            [user.get('id'), 
+                user.get('username'), 
+                td.get('completed'), 
+                td.get('title')]
             ) for td in todos]
-        file.close()
+        csv_file.close()
