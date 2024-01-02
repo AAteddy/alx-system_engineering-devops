@@ -7,14 +7,16 @@ import requests
 import sys
 
 
-if __name__ == '__main__':
-    url = 'https://jsonplaceholder.typicode.com/'
-    user = requests.get(url + 'users/{}'.format(sys.argv[1])).json()
-    todos = requests.get(url + 'todos', params={'userId': sys.argv[1]}).json()
+if __name__ == "__main__":
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username")
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.json".format(sys.argv[1]), "w", newline="") as json_file:
-        json.dump({sys.argv[1]: 
-            [{"task": td.get('title'), 
-                "completed": td.get('completed'), 
-                "username": user.get('username')} 
-                for td in todos]}, json_file)
+    with open("{}.json".format(user_id), "w") as jsonfile:
+        json.dump({user_id: [{
+                "task": t.get("title"),
+                "completed": t.get("completed"),
+                "username": username
+            } for t in todos]}, jsonfile)
