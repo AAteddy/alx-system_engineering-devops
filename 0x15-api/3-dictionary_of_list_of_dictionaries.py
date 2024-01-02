@@ -14,5 +14,7 @@ if __name__ == '__main__':
     with open("todo_all_employees.json", "w", newline="") as json_dict:
         for employee in user:
             json.dump({employee.get('id'):
-                    [{"username": employee.get('username'), "task": td.get('title'), "completed": td.get('completed')} 
+                    [{"username": employee.get('username'), 
+                        "task": td.get('title'), 
+                        "completed": td.get('completed')} 
                     for td in todos]}, json_dict)
