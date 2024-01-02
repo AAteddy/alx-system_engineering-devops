@@ -14,5 +14,7 @@ if __name__ == '__main__':
 
     with open("{}.json".format(sys.argv[1]), "w", newline="") as json_file:
         json.dump({sys.argv[1]: 
-            [{"task": td.get('title'), "completed": td.get('completed'), "username": user.get('username')} 
+            [{"task": td.get('title'), 
+                "completed": td.get('completed'), 
+                "username": user.get('username')} 
                 for td in todos]}, json_file)
