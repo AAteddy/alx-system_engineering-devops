@@ -4,7 +4,7 @@ the titles of the first 10 hot posts listed.
 """
 import requests
 
-headers = { "User-Agent": "CustomUserAgent/1.0" }
+headers = {"User-Agent": "CustomUserAgent/1.0"}
 
 def top_ten(subreddit):
     """Returns the titles of the first 10 hot posts listed
