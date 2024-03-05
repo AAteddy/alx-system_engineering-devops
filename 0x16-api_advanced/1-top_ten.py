@@ -11,7 +11,7 @@ def top_ten(subreddit):
     for a given subreddit.
     OR - Returns 0 if not a valid subreddit.
     """
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json")
     params = { "limit": 10 }
 
     response = requests.get(url,
